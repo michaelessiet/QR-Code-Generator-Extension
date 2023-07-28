@@ -1,6 +1,6 @@
 # QR Code Generator Extention
 
-This project is a QR code generator Chrome extension built using Solidjs.
+This project is a QR code generator Chrome extension built using Solidjs. It's a light weight project that I put together while exploring the process of building Chrome extensions.
 
 ## Getting Started
 
