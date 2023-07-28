@@ -2,6 +2,8 @@
 
 This project is a QR code generator Chrome extension built using Solidjs. It's a light weight project that I put together while exploring the process of building Chrome extensions.
 
+**Note**: A `dist.crx` file is already generated and ready to go in case you would like to install the extension without having to build it yourself.
+
 ## Getting Started
 
 In order to load this extension you will have to build the project using the following command:
