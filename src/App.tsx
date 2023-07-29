@@ -1,16 +1,14 @@
-import { createSignal, type Component, createEffect } from "solid-js";
+import { createSignal, type Component } from "solid-js";
 import QRcode from "qrcode";
 
 const App: Component = () => {
-  const [qrData, setQRData] = createSignal("");
+  const [qrDataUrl, setQRDataUrl] = createSignal("");
   let canvasRef: HTMLCanvasElement;
   let inputRef: HTMLInputElement;
 
   async function setter(v) {
-    setQRData(v.currentTarget.value);
-    QRcode.toCanvas(canvasRef, v.currentTarget.value, (error) =>
-      console.error(error),
-    );
+    QRcode.toCanvas(canvasRef, v.currentTarget.value);
+    setQRDataUrl(await QRcode.toDataURL(v.currentTarget.value));
   }
 
   return (
@@ -19,7 +17,6 @@ const App: Component = () => {
       <input
         class="outline-black outline rounded p-2"
         placeholder="Input text to encode..."
-        value={qrData()}
         ref={inputRef}
         onkeyup={setter}
       />
@@ -27,6 +24,9 @@ const App: Component = () => {
         class="outline outline-black m-4 rounded w-0 h-0"
         ref={canvasRef}
       ></canvas>
+      <a href={qrDataUrl()} download="qrcode.png">
+        Download
+      </a>
     </div>
   );
 };
